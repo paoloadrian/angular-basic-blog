@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
-import { PostService } from '../services/post.service';
-import { PostServiceMock } from '../services/post-service.mock'
+import { PostService } from '../services/post/post.service';
+import { PostServiceMock } from '../services/post/post-service.mock'
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
