@@ -1,1 +1,15 @@
-<p>home works!</p>
+<h1>{{title}}</h1>
+<ng-container *ngIf="!showError">
+    <mat-card *ngFor="let post of postsList">
+        <mat-card-header>
+            <mat-card-title>{{post.title}}</mat-card-title>
+            <mat-card-subtitle>ID: {{post.id}} | User: {{post.userId}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{post.body}}</p>
+        </mat-card-content>
+    </mat-card>
+</ng-container>
+<ng-container *ngIf="showError">
+    <h3>{{errorMessage}}</h3>
+</ng-container>

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
+import { PostService } from '../services/post.service';
+import { PostServiceMock } from '../services/post-service.mock'
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -8,9 +10,11 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
-    })
-    .compileComponents();
+      declarations: [ HomeComponent ],
+      providers: [ 
+        { provide: PostService, useValue: PostServiceMock }
+      ]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
@@ -19,5 +23,22 @@ describe('HomeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it(`should have as title 'Awesome blogs over here'`, () => {
+    expect(component.title).toEqual('Awesome blogs over here');
+  });
+
+  it('should render title', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Awesome blogs over here');
+  });
+
+  it('should render post in card', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('mat-card-title')?.textContent).toContain(PostServiceMock.postsList[0].title);
+    const subtitle = 'ID: ' + PostServiceMock.postsList[0].id + ' | User: ' + PostServiceMock.postsList[0].userId;
+    expect(compiled.querySelector('mat-card-subtitle')?.textContent).toContain(subtitle);
+    expect(compiled.querySelector('mat-card-content')?.textContent).toContain(PostServiceMock.postsList[0].body);
   });
 });
