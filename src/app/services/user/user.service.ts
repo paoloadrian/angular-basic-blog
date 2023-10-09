@@ -16,7 +16,12 @@ export class UserService {
     },
     {
       userId: 2,
-      email: 'paolo@email.com',
+      email: 'fernandez.pafr@gmail.com',
+      password: '123456'
+    },
+    {
+      userId: 3,
+      email: 'juan.gomez@encora.com',
       password: '123456'
     }
   ];

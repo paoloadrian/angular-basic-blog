@@ -1,5 +1,10 @@
 # AngularBasicBlog
 
+Users list is static, three entries are provided by defult, please login with any of them:
+- email: 'admin@email.com', password: 'adminadmin'
+- email: 'fernandez.pafr@gmail.com', password: '123456'
+- email: 'juan.gomez@encora.com', password: '123456'
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.5.
 
 ## Development server
