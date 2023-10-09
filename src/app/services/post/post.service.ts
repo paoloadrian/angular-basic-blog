@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Post } from '../models/post';
+import { Post } from '../../models/post';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  URL = 'https://jsonplaceholder.typicode.com/posts';
+  private readonly URL = 'https://jsonplaceholder.typicode.com/posts';
 
   constructor(private httpClient: HttpClient) { }
 

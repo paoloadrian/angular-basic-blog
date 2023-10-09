@@ -1,5 +1,5 @@
 import {Observable} from 'rxjs';
-import { Post } from '../models/post';
+import { Post } from '../../models/post';
 
 const POSTS_LIST: Post[] = [
     {
