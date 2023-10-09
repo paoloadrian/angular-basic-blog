@@ -27,12 +27,12 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'Awesome blogs over here'`, () => {
-    expect(component.title).toEqual('Awesome blogs over here');
+  it(`should have as title 'My Super Blog'`, () => {
+    expect(component.title).toEqual('My Super Blog');
   });
 
   it('should render title', () => {
-    expect(compiled.querySelector('h1')?.textContent).toContain('Awesome blogs over here');
+    expect(compiled.querySelector('mat-toolbar span')?.textContent).toContain('My Super Blog');
   });
 
   it('should render post in card', () => {

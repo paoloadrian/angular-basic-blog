@@ -1,15 +1,23 @@
-<h1>{{title}}</h1>
-<ng-container *ngIf="!showError">
-    <mat-card *ngFor="let post of postsList">
-        <mat-card-header>
-            <mat-card-title>{{post.title}}</mat-card-title>
-            <mat-card-subtitle>ID: {{post.id}} | User: {{post.userId}}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <p>{{post.body}}</p>
-        </mat-card-content>
-    </mat-card>
-</ng-container>
-<ng-container *ngIf="showError">
-    <h3>{{errorMessage}}</h3>
-</ng-container>
+<mat-toolbar color="primary">
+    <span>{{title}}</span>
+    <span class="spacer"></span>
+    <mat-icon class="logout" aria-hidden="false" aria-label="Example home icon" fontIcon="logout-icon" (click)="logout()"></mat-icon>
+</mat-toolbar>
+<div class="main-content">
+    <mat-grid-list cols="3" rowHeight="2:1" *ngIf="!showError">
+        <mat-grid-tile *ngFor="let post of postsList">
+            <mat-card class="post-card">
+                <mat-card-header>
+                    <mat-card-title>{{post.title}}</mat-card-title>
+                    <mat-card-subtitle>ID: {{post.id}} | User: {{post.userId}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>{{post.body}}</p>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <ng-container *ngIf="showError">
+        <h3>{{errorMessage}}</h3>
+    </ng-container>
+</div>

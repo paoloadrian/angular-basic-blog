@@ -1,0 +1,15 @@
+.spacer {
+    flex: 1 1 auto;
+}
+.logout-icon {
+    cursor: pointer;
+}
+.main-content {
+    margin: 15px;
+}
+.post-card {
+    margin: 15px;
+}
+mat-card-header {
+    background-color:aliceblue;
+}

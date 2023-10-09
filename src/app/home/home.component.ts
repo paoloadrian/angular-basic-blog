@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../services/post/post.service';
 import { Post } from '../models/post';
+import { UserService } from '../services/user/user.service';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +9,12 @@ import { Post } from '../models/post';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  title: string = 'Awesome blogs over here';
+  title: string = 'My Super Blog';
   postsList: Post[] = [];
   errorMessage: string = 'Error reading posts';
   showError: boolean = false;
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.postService.getPosts().subscribe((response: Post[]) => {
@@ -24,4 +25,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  logout(): void {
+    this.userService.logout();
+  }
 }

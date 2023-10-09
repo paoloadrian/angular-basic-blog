@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 
 @Injectable({
@@ -20,8 +21,8 @@ export class UserService {
     }
   ];
 
-  constructor() {
-    const storageUser = sessionStorage.getItem(this.storageUserKey);
+  constructor(private router: Router) {
+    const storageUser = localStorage.getItem(this.storageUserKey);
     if (storageUser)
       this.loggedInUser = storageUser;
   }
@@ -30,7 +31,7 @@ export class UserService {
     const loggedUser = this.usersList.find((user: User) => user.email == newUser.email && user.password == newUser.password);
     if (loggedUser !== undefined) {
       this.loggedInUser = loggedUser;
-      sessionStorage.setItem(this.storageUserKey, JSON.stringify(this.loggedInUser));
+      localStorage.setItem(this.storageUserKey, JSON.stringify(this.loggedInUser));
       return true;
     }
     return false;
@@ -38,5 +39,11 @@ export class UserService {
 
   userIsLoggedIn(): boolean {
     return this.loggedInUser !== undefined;
+  }
+
+  logout(): void {
+    this.loggedInUser = undefined;
+    localStorage.removeItem(this.storageUserKey);
+    this.router.navigate(['/login']);
   }
 }
