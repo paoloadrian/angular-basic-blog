@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
     <span>{{title}}</span>
     <span class="spacer"></span>
-    <mat-icon class="logout" aria-hidden="false" aria-label="Example home icon" fontIcon="logout-icon" (click)="logout()"></mat-icon>
+    <mat-icon class="logout-icon" aria-hidden="false" aria-label="Example home icon" fontIcon="logout-icon" (click)="logout()" title="Logout"></mat-icon>
 </mat-toolbar>
 <div class="main-content">
     <mat-grid-list cols="3" rowHeight="2:1" *ngIf="!showError">
