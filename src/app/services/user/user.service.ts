@@ -10,12 +10,12 @@ export class UserService {
   private readonly usersList: User[] = [
     {
       userId: 1,
-      username: 'admin@email.com',
+      email: 'admin@email.com',
       password: 'adminadmin'
     },
     {
       userId: 2,
-      username: 'paolo@email.com',
+      email: 'paolo@email.com',
       password: '123456'
     }
   ];
@@ -27,7 +27,7 @@ export class UserService {
   }
 
   login(newUser: any): boolean {
-    const loggedUser = this.usersList.find((user: User) => user.username == newUser.username && user.password == newUser.password);
+    const loggedUser = this.usersList.find((user: User) => user.email == newUser.email && user.password == newUser.password);
     if (loggedUser !== undefined) {
       this.loggedInUser = loggedUser;
       sessionStorage.setItem(this.storageUserKey, JSON.stringify(this.loggedInUser));

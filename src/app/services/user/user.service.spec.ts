@@ -18,33 +18,33 @@ describe('UserService', () => {
   });
 
   it('should fail login when both parameters are wrong', () => {
-    const resp = service.login({username: 'error', password: 'error' });
+    const resp = service.login({email: 'error', password: 'error' });
     expect(resp).toBeFalsy();
   });
 
-  it('should fail login when username is wrong', () => {
-    const resp = service.login({username: 'error', password: 'adminadmin' });
+  it('should fail login when email is wrong', () => {
+    const resp = service.login({email: 'error', password: 'adminadmin' });
     expect(resp).toBeFalsy();
   });
 
   it('should fail login when password is wrong', () => {
-    const resp = service.login({username: 'admin@email.com', password: 'error' });
+    const resp = service.login({email: 'admin@email.com', password: 'error' });
     expect(resp).toBeFalsy();
   });
 
   it('should fail when user not logged in', () => {
-    service.login({username: 'admin@email.com', password: 'error' });
+    service.login({email: 'admin@email.com', password: 'error' });
     const resp = service.userIsLoggedIn();
     expect(resp).toBeFalsy();
   });
 
   it('should pass login when password is wrong', () => {
-    const resp = service.login({username: 'admin@email.com', password: 'adminadmin' });
+    const resp = service.login({email: 'admin@email.com', password: 'adminadmin' });
     expect(resp).toBeTruthy();
   });
 
   it('should pass recently loggedInUser when requested', () => {
-    service.login({username: 'admin@email.com', password: 'adminadmin' });
+    service.login({email: 'admin@email.com', password: 'adminadmin' });
     const resp = service.userIsLoggedIn();
     expect(resp).toBeTruthy();
   });
