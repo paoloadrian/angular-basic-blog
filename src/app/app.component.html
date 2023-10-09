@@ -1,1 +1,6 @@
+<mat-toolbar *ngIf="userIsLoggedIn" color="primary">
+    <span>{{title}}</span>
+    <span class="spacer"></span>
+    <mat-icon class="logout-icon" aria-hidden="false" aria-label="Example home icon" fontIcon="logout-icon" (click)="logout()" title="Logout"></mat-icon>
+</mat-toolbar>
 <router-outlet></router-outlet>

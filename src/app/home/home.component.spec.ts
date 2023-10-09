@@ -27,14 +27,6 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'My Super Blog'`, () => {
-    expect(component.title).toEqual('My Super Blog');
-  });
-
-  it('should render title', () => {
-    expect(compiled.querySelector('mat-toolbar span')?.textContent).toContain('My Super Blog');
-  });
-
   it('should render post in card', () => {
     expect(compiled.querySelector('mat-card-title')?.textContent).toContain(PostServiceMock.postsList[0].title);
     const subtitle = 'ID: ' + PostServiceMock.postsList[0].id + ' | User: ' + PostServiceMock.postsList[0].userId;

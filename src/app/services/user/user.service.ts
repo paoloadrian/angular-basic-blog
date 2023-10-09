@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { User } from 'src/app/models/user';
 
 @Injectable({
@@ -25,6 +26,7 @@ export class UserService {
       password: '123456'
     }
   ];
+  userStatusHasChanged$: Subject<boolean> = new Subject();
 
   constructor(private router: Router) {
     const storageUser = localStorage.getItem(this.storageUserKey);
@@ -37,6 +39,7 @@ export class UserService {
     if (loggedUser !== undefined) {
       this.loggedInUser = loggedUser;
       localStorage.setItem(this.storageUserKey, JSON.stringify(this.loggedInUser));
+      this.userStatusHasChanged$.next(true);
       return true;
     }
     return false;
@@ -49,6 +52,7 @@ export class UserService {
   logout(): void {
     this.loggedInUser = undefined;
     localStorage.removeItem(this.storageUserKey);
+    this.userStatusHasChanged$.next(false);
     this.router.navigate(['/login']);
   }
 }
